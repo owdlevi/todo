@@ -12,15 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/theme-ui": "^0.3.1",
+    "@material/react-button": "^0.15.0",
+    "@material/react-text-field": "^0.15.0",
     "next": "^9.3.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "sass": "^1.26.3",
     "theme-ui": "^0.3.1"
-  },
-  "devDependencies": {
-    "@types/node": "^13.9.5",
-    "@types/react": "^16.9.27",
-    "typescript": "^3.8.3"
   }
 }

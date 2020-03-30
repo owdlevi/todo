@@ -1,19 +1,11 @@
 /** @jsx jsx */
-import { ThemeProvider, jsx, Container } from "theme-ui";
-import * as React from "react";
-import Link from "next/link";
-import Head from "next/head";
-import theme from "./theme";
-import SwitchColorMode from "./SwitchColorMode";
+import { ThemeProvider, jsx, Container } from 'theme-ui'
+import Link from 'next/link'
+import Head from 'next/head'
+import theme from './theme'
+import SwitchColorMode from './SwitchColorMode'
 
-type Props = {
-  title?: string;
-};
-
-const Layout: React.FunctionComponent<Props> = ({
-  children,
-  title = "This is the default title"
-}) => (
+const Layout = ({ children, title = 'This is the default title' }) => (
   <ThemeProvider theme={theme}>
     <Head>
       <title>{title}</title>
@@ -22,34 +14,31 @@ const Layout: React.FunctionComponent<Props> = ({
     </Head>
     <header
       sx={{
-        variant: "styles.header"
-      }}
-    >
+        variant: 'styles.header'
+      }}>
       <Container
         p={4}
         bg="muted"
         sx={{
-          maxWidth: "100%",
-          mx: "auto",
-          display: "flex",
-          alignItems: "baseline"
-        }}
-      >
+          maxWidth: '100%',
+          mx: 'auto',
+          display: 'flex',
+          alignItems: 'baseline'
+        }}>
         <Link href="/">
           <a
             sx={{
-              variant: "styles.navlink",
+              variant: 'styles.navlink',
               fontSize: 5,
               py: 2
-            }}
-          >
+            }}>
             To Do
           </a>
         </Link>
-        <div sx={{ mx: "auto" }} />
+        <div sx={{ mx: 'auto' }} />
         <SwitchColorMode
           sx={{
-            variant: "styles.button",
+            variant: 'styles.button',
             ml: 3,
             py: 2
           }}
@@ -67,6 +56,6 @@ const Layout: React.FunctionComponent<Props> = ({
       </Container>
     </footer>
   </ThemeProvider>
-);
+)
 
-export default Layout;
+export default Layout
