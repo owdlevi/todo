@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useState } from 'react'
-import config from './../../config/config'
+import loadFirestore from '../../lib/db'
 
 const AddTodo = () => {
   const [todo, setTodo] = useState('')
@@ -11,12 +11,22 @@ const AddTodo = () => {
     setTodo(value)
   }
 
-  const storeTodo = () => {
-    let todosList = localStorage.getItem(config.localStorageKey) || []
-    console.log(typeof todosList)
-    todosList.push(todo)
-    localStorage.setItem(config.localStorageKey, todosList)
-    setTodo('')
+  const storeTodo = async () => {
+    const firebase = await loadFirestore()
+    // These lines are new
+    if (todo) {
+      const item = {
+        status: false,
+        todo
+      }
+      firebase
+        .firestore()
+        .collection('data')
+        .doc()
+        .set(item)
+        .then(() => setTodo(''))
+        .catch(error => console.error(error))
+    }
   }
 
   return (
