@@ -1,13 +1,12 @@
 import Layout from '../components/Layout'
 import Todo from '../components/Todo'
-import TodoList from '../components/TodoList'
+
 import loadFirestore from '../lib/db'
 
 const Home = ({ data }) => {
   return (
     <Layout>
       <Todo />
-      <TodoList />
     </Layout>
   )
 }

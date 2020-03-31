@@ -12,49 +12,53 @@ const Layout = ({ children, title = 'This is the default title' }) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header
+    <div
       sx={{
-        variant: 'styles.header'
+        fontSize: '15px',
+        fontFamily: "'Open Sans', sans-serif",
+        backgroundColor: 'background',
+        // backgroundImage: 'linear-gradient(#89cff0 0%, #ef5081 100%)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        margin: 0,
+        minHeight: '100vh',
+        position: 'relative'
       }}>
-      <Container
-        p={4}
-        bg="muted"
+      <header
         sx={{
-          maxWidth: '100%',
-          mx: 'auto',
-          display: 'flex',
-          alignItems: 'baseline'
+          variant: 'styles.header'
         }}>
-        <Link href="/">
-          <a
-            sx={{
-              variant: 'styles.navlink',
-              fontSize: 5,
-              py: 2
-            }}>
-            To Do
-          </a>
-        </Link>
-        <div sx={{ mx: 'auto' }} />
-        <SwitchColorMode
+        <Container
+          p={4}
+          bg="muted"
           sx={{
-            variant: 'styles.button',
-            ml: 3,
-            py: 2
-          }}
-        />
-      </Container>
-    </header>
-    <Container p={4} bg="muted">
-      {children}
-    </Container>
-
-    <footer>
-      <Container p={4} bg="muted">
-        <hr />
-        <span>I'm here to stay (Footer)</span>
-      </Container>
-    </footer>
+            maxWidth: '100%',
+            mx: 'auto',
+            display: 'flex',
+            alignItems: 'baseline'
+          }}>
+          <Link href="/">
+            <a
+              sx={{
+                variant: 'styles.navlink',
+                fontSize: 5,
+                py: 2
+              }}>
+              To Do
+            </a>
+          </Link>
+          <div sx={{ mx: 'auto' }} />
+          <SwitchColorMode
+            sx={{
+              variant: 'styles.button',
+              ml: 3,
+              py: 2
+            }}
+          />
+        </Container>
+      </header>
+      <Container>{children}</Container>
+    </div>
   </ThemeProvider>
 )
 
