@@ -14,9 +14,9 @@ const AddTodo = () => {
   const storeTodo = async () => {
     const firebase = await loadFirestore()
     // These lines are new
-    if (todo.length > 5) {
+    if (todo.length > 3) {
       const item = {
-        status: false,
+        done: false,
         todo
       }
       firebase
@@ -36,7 +36,7 @@ const AddTodo = () => {
         mx: 'auto',
         display: 'flex',
         alignItems: 'baseline',
-        justifyContent: 'flex-start'
+        justifyContent: 'space-between'
       }}>
       {/* <input value={todo} type="text" onChange={event => onChange(event)} /> */}
       <input
@@ -47,6 +47,7 @@ const AddTodo = () => {
           transition: 'all ease-in 0.25s'
         }}
         value={todo}
+        placeholder="New Todo"
         type="text"
         onChange={e => handleChange(e)}
       />
