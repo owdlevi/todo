@@ -11,9 +11,9 @@ const AddTodo = () => {
     setTodo(value)
   }
 
-  const storeTodo = async () => {
+  const storeTodo = async e => {
     const firebase = await loadFirestore()
-    // These lines are new
+    // && (e.type === 'click' || e.charCode === 13)
     if (todo.length > 3) {
       const item = {
         done: false,
@@ -40,6 +40,7 @@ const AddTodo = () => {
       }}>
       {/* <input value={todo} type="text" onChange={event => onChange(event)} /> */}
       <input
+        onKeyPress={e => storeTodo(e)}
         sx={{
           variant: 'styles.input',
           border: '1px solid #ddd',
@@ -52,7 +53,7 @@ const AddTodo = () => {
         onChange={e => handleChange(e)}
       />
       <button
-        onClick={() => storeTodo()}
+        onClick={e => storeTodo(e)}
         sx={{
           variant: 'styles.input',
           border: '1px solid #ddd',

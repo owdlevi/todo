@@ -22,9 +22,23 @@ const TodoItem = ({ todo }) => {
       .set(updatedTodo)
       .catch(error => console.error(error))
   }
+
+  const checkboxAfter = todo.done
+    ? {
+        position: 'absolute',
+        content: '""',
+        top: '30%',
+        left: '50%',
+        height: '3px',
+        width: '6px',
+        border: 'solid #fc6c48',
+        borderWidth: '0 0 2px 2px',
+        transformOrigin: 'center center',
+        transform: 'rotate(-45deg) translate(-50%, -50%)'
+      }
+    : {}
   return (
     <div
-      onClick={() => updateTodo()}
       sx={{
         position: 'relative',
         margin: '10px 0',
@@ -48,6 +62,7 @@ const TodoItem = ({ todo }) => {
         type="checkbox"
       />
       <label
+        onClick={() => updateTodo()}
         sx={{
           position: 'absolute',
           cursor: 'pointer',
@@ -58,10 +73,12 @@ const TodoItem = ({ todo }) => {
           height: '22px',
           borderRadius: '2px',
           border: '1px solid #cfdcec',
-          backgroundColor: '#fff'
+          backgroundColor: '#fff',
+          '&:after': checkboxAfter
         }}
         htmlFor={`item_${todo.id}`}></label>
       <span
+        onClick={() => updateTodo()}
         sx={{
           textDecoration: todo.done ? 'line-through' : ''
         }}>
@@ -82,6 +99,7 @@ const TodoItem = ({ todo }) => {
           backgroundColor: '#f56468',
           color: '#fff',
           transition: 'all ease-in 0.25s',
+          zIndex: 1232,
           '::after': {
             position: 'absolute',
             content: "''",
