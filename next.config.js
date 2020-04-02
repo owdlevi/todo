@@ -14,7 +14,6 @@ module.exports = {
     }, {})
 
     config.plugins.push(new webpack.DefinePlugin(env))
-    console.log(config)
     return config
   }
 }
