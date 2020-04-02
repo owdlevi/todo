@@ -48,13 +48,13 @@ const Layout = ({ children, title = 'This is the default title' }) => (
             </a>
           </Link>
           <div sx={{ mx: 'auto' }} />
-          <SwitchColorMode
+          {/* <SwitchColorMode
             sx={{
               variant: 'styles.button',
               ml: 3,
               py: 2
             }}
-          />
+          /> */}
         </Container>
       </header>
       <Container>{children}</Container>

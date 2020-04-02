@@ -1,3 +1,6 @@
+.DS_Store
+*.DS_Store*
+.DS_Store
 .next
 node_modules
 node_modules/*
@@ -9,3 +12,4 @@ yarn.lock
 
 .env-*
 .env.build
+.DS_Store

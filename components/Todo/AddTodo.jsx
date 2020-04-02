@@ -40,7 +40,7 @@ const AddTodo = () => {
       }}>
       {/* <input value={todo} type="text" onChange={event => onChange(event)} /> */}
       <input
-        onKeyPress={e => storeTodo(e)}
+        // onKeyPress={e => storeTodo(e)}
         sx={{
           variant: 'styles.input',
           border: '1px solid #ddd',

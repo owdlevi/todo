@@ -14,11 +14,13 @@
   "dependencies": {
     "@material/react-button": "^0.15.0",
     "@material/react-text-field": "^0.15.0",
+    "@svgr/webpack": "^5.3.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.13.1",
     "next": "^9.3.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-spring": "^8.0.27",
     "sass": "^1.26.3",
     "theme-ui": "^0.3.1"
   }
