@@ -8,6 +8,7 @@ const Garden = ({ todoCount, completed }) => {
   return (
     <div
       sx={{
+        pointerEvents: 'none',
         position: 'absolute',
         left: 0,
         top: 0,
