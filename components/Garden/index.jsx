@@ -1,10 +1,39 @@
 /** @jsx jsx */
+import { useState, useEffect } from 'react'
 import { jsx } from 'theme-ui'
+import loadFirestore from '../../lib/db'
 import Sun from './Sun'
 import Flower from './Flower'
 
-const Garden = ({ todoCount, completed }) => {
+const Garden = () => {
+  const [todo, setTodo] = useState(null)
+  const [completed, setCompleted] = useState(null)
+
   const show = completed > 2 ? true : false
+  useEffect(() => {
+    const fetchData = async () => {
+      const firebase = await loadFirestore()
+      const query = firebase.firestore().collection('data').limit(12)
+
+      query.onSnapshot((snapshot) => {
+        let data = []
+        if (snapshot.size) {
+          snapshot.forEach((doc) => {
+            const document = { id: doc.id, ...doc.data() }
+            data.push(document)
+          })
+          const completed = data.filter((todo) => todo.done)
+
+          setTodo(data.length)
+          setCompleted(completed.length)
+        } else {
+          setTodo(data.length)
+        }
+      })
+    }
+    fetchData()
+  }, [])
+
   return (
     <div
       sx={{
