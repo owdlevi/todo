@@ -19,7 +19,7 @@ const UserStatus = (props) => {
       />
     </div>
   ) : (
-    <div>Login</div>
+    <div>Sign In</div>
   )
 }
 export default UserStatus
