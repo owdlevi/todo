@@ -2,16 +2,20 @@
 import { jsx } from 'theme-ui'
 import { useState } from 'react'
 import loadFirestore from '../../lib/db'
+import { get } from 'lodash/object'
+import { useAuthUserInfo } from '../../utils/auth/hooks'
 
 const AddTodo = () => {
+  const AuthUser = get(useAuthUserInfo(), 'AuthUser', null)
+
   const [todo, setTodo] = useState('')
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const value = e.target.value
     setTodo(value)
   }
 
-  const storeTodo = async e => {
+  const storeTodo = async (e) => {
     const firebase = await loadFirestore()
     // && (e.type === 'click' || e.charCode === 13)
     if (todo.length > 3) {
@@ -21,11 +25,13 @@ const AddTodo = () => {
       }
       firebase
         .firestore()
-        .collection('data')
+        .collection('todo')
+        .doc(AuthUser.id)
+        .collection('todos')
         .doc()
         .set(item)
         .then(() => setTodo(''))
-        .catch(error => console.error(error))
+        .catch((error) => console.error(error))
     }
   }
 
@@ -50,10 +56,10 @@ const AddTodo = () => {
         value={todo}
         placeholder="New Todo"
         type="text"
-        onChange={e => handleChange(e)}
+        onChange={(e) => handleChange(e)}
       />
       <button
-        onClick={e => storeTodo(e)}
+        onClick={(e) => storeTodo(e)}
         sx={{
           variant: 'styles.input',
           border: '1px solid #ddd',

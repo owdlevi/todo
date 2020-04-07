@@ -5,7 +5,7 @@ import loadFirestore from '../../lib/db'
 import Sun from './Sun'
 import Flower from './Flower'
 
-const Garden = () => {
+const Garden = ({ AuthUserID }) => {
   const [todo, setTodo] = useState(null)
   const [completed, setCompleted] = useState(null)
 
@@ -13,7 +13,7 @@ const Garden = () => {
   useEffect(() => {
     const fetchData = async () => {
       const firebase = await loadFirestore()
-      const query = firebase.firestore().collection('data').limit(12)
+      const query = firebase.firestore().collection('todo').doc(AuthUserID).collection('todos').limit(12)
 
       query.onSnapshot((snapshot) => {
         let data = []

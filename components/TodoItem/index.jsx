@@ -2,14 +2,11 @@
 import { jsx } from 'theme-ui'
 import loadFirestore from '../../lib/db'
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, userID }) => {
+  console.log(userID)
   const removeTodo = async () => {
     const firebase = await loadFirestore()
-    firebase
-      .firestore()
-      .collection('data')
-      .doc(todo.id)
-      .delete()
+    firebase.firestore().collection('todo').doc(userID).collection('todos').doc(todo.id).delete()
   }
   const updateTodo = async () => {
     const firebase = await loadFirestore()
@@ -17,10 +14,12 @@ const TodoItem = ({ todo }) => {
 
     firebase
       .firestore()
-      .collection('data')
+      .collection('todo')
+      .doc(userID)
+      .collection('todos')
       .doc(todo.id)
       .set(updatedTodo)
-      .catch(error => console.error(error))
+      .catch((error) => console.error(error))
   }
 
   const checkboxAfter = todo.done

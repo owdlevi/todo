@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import TodoItem from '../TodoItem'
 import loadFirestore from '../../lib/db'
+import { get } from 'lodash/object'
+import { useAuthUserInfo } from '../../utils/auth/hooks'
 
 const TodoList = () => {
+  const AuthUser = get(useAuthUserInfo(), 'AuthUser', null)
+
   const [todo, setTodo] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       const firebase = await loadFirestore()
-      const query = firebase
-        .firestore()
-        .collection('data')
-        .limit(12)
+      const query = firebase.firestore().collection('todo').doc(AuthUser.id).collection('todos').limit(12)
 
-      query.onSnapshot(snapshot => {
+      query.onSnapshot((snapshot) => {
         let data = []
         if (snapshot.size) {
-          snapshot.forEach(doc => {
+          snapshot.forEach((doc) => {
             const document = { id: doc.id, ...doc.data() }
             data.push(document)
           })
@@ -29,7 +30,7 @@ const TodoList = () => {
     fetchData()
   }, [])
 
-  return <div>{todo && todo.map(item => <TodoItem key={item.id} todo={item} />)}</div>
+  return <div>{todo && todo.map((item) => <TodoItem key={item.id} todo={item} userID={AuthUser.id} />)}</div>
 }
 
 export default TodoList

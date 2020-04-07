@@ -49,8 +49,8 @@ const Index = (props) => {
       )}
       {AuthUser ? (
         <div>
-          <Garden AuthUser={AuthUser} />
-          <Todo />
+          <Garden AuthUserID={AuthUser.id} />
+          <Todo AuthUserID={AuthUser.id} />
         </div>
       ) : (
         ``

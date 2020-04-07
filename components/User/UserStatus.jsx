@@ -5,7 +5,6 @@ import logout from '../../utils/auth/logout'
 
 const UserStatus = (props) => {
   const { initializing, user } = useFirebaseAuth()
-  console.log(user)
   return user ? (
     <div>
       {user.displayName}
