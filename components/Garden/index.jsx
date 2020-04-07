@@ -56,7 +56,7 @@ const Garden = ({ AuthUserID }) => {
             width: '10rem',
             position: 'absolute',
             top: '40px',
-            right: '40px'
+            right: '100px'
           }}>
           <Sun completed={completed} />
         </div>
