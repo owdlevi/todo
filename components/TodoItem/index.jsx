@@ -2,8 +2,8 @@
 import { jsx } from 'theme-ui'
 import loadFirestore from '../../lib/db'
 
-const TodoItem = ({ todo, userID }) => {
-  console.log(userID)
+const TodoItem = ({ todo, userID, bgcolor }) => {
+  console.log(todo)
   const removeTodo = async () => {
     const firebase = await loadFirestore()
     firebase.firestore().collection('todo').doc(userID).collection('todos').doc(todo.id).delete()
@@ -39,81 +39,92 @@ const TodoItem = ({ todo, userID }) => {
   return (
     <div
       sx={{
-        position: 'relative',
-        margin: '10px 0',
-        background: '#e0e8f5',
-        borderRadius: '3px',
-        paddingLeft: '38px',
-        paddingTop: '12px',
-        paddingBottom: '12px',
-        paddingRight: '49px',
-        overflow: 'hidden',
-        hover: {}
+        position: 'absolute',
+        minHeight: '46px',
+        width: '100%',
+        overflow: 'visible',
+        pointerEvents: 'auto',
+        transformOrigin: '50% 50% 0px',
+        borderRadius: '5px',
+        marginBottom: '5px'
       }}>
-      <input
+      <div
         sx={{
-          position: 'absolute',
-          opacity: '0',
-          display: 'none'
-        }}
-        className="todo-checkbox"
-        id={`item_${todo.id}`}
-        type="checkbox"
-      />
-      <label
-        onClick={() => updateTodo()}
-        sx={{
-          position: 'absolute',
-          cursor: 'pointer',
-          left: '10px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          width: '22px',
-          height: '22px',
-          borderRadius: '2px',
-          border: '1px solid #cfdcec',
-          backgroundColor: '#fff',
-          '&:after': checkboxAfter
-        }}
-        htmlFor={`item_${todo.id}`}></label>
-      <span
-        onClick={() => updateTodo()}
-        sx={{
-          textDecoration: todo.done ? 'line-through' : ''
+          position: 'relative',
+          margin: '10px 0',
+          background: '#e0e8f5',
+          borderRadius: '3px',
+          paddingLeft: '38px',
+          paddingTop: '12px',
+          paddingBottom: '12px',
+          paddingRight: '49px',
+          overflow: 'hidden',
+          hover: {}
         }}>
-        {todo.todo}
-      </span>
-      <span
-        onClick={() => removeTodo()}
-        className="delete"
-        sx={{
-          position: 'absolute',
-          height: '100%',
-          top: '50%',
-          right: 0,
-          transform: 'translateY(-50%)',
-          cursor: 'pointer',
-          opacity: 1,
-          width: '44px',
-          backgroundColor: '#f56468',
-          color: '#fff',
-          transition: 'all ease-in 0.25s',
-          zIndex: 1232,
-          '::after': {
+        <input
+          sx={{
             position: 'absolute',
-            content: "''",
-            width: '16px',
-            height: '16px',
+            opacity: '0',
+            display: 'none'
+          }}
+          className="todo-checkbox"
+          id={`item_${todo.id}`}
+          type="checkbox"
+        />
+        <label
+          onClick={() => updateTodo()}
+          sx={{
+            position: 'absolute',
+            cursor: 'pointer',
+            left: '10px',
             top: '50%',
-            left: '50%',
-            backgroundImage: 'url("https://nourabusoud.github.io/vue-todo-list/images/trash.svg")',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            backgroundSize: 'contain',
-            transform: 'translate(-50%, -50%) scale(1)',
-            transition: 'all ease-in 0.25s'
-          }
-        }}></span>
+            transform: 'translateY(-50%)',
+            width: '22px',
+            height: '22px',
+            borderRadius: '2px',
+            border: '1px solid #cfdcec',
+            backgroundColor: '#fff',
+            '&:after': checkboxAfter
+          }}
+          htmlFor={`item_${todo.id}`}></label>
+        <span
+          sx={{
+            textDecoration: todo.done ? 'line-through' : ''
+          }}>
+          {todo.todo}
+        </span>
+        <span
+          onClick={() => removeTodo()}
+          className="delete"
+          sx={{
+            position: 'absolute',
+            height: '100%',
+            top: '50%',
+            right: 0,
+            transform: 'translateY(-50%)',
+            cursor: 'pointer',
+            opacity: 1,
+            width: '44px',
+            backgroundColor: '#f56468',
+            color: '#fff',
+            transition: 'all ease-in 0.25s',
+            zIndex: 1232,
+            '::after': {
+              position: 'absolute',
+              content: "''",
+              width: '16px',
+              height: '16px',
+              top: '50%',
+              left: '50%',
+              backgroundImage: 'url("https://nourabusoud.github.io/vue-todo-list/images/trash.svg")',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+              backgroundSize: 'contain',
+              transform: 'translate(-50%, -50%) scale(1)',
+              transition: 'all ease-in 0.25s'
+            }
+          }}></span>
+      </div>{' '}
     </div>
   )
 }

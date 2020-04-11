@@ -297,3 +297,9 @@ footer {
 footer a {
   color: #fff;
 }
+
+.content {
+  position: relative;
+  width: 320px;
+  height: 240px;
+}
