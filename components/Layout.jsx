@@ -6,7 +6,7 @@ import theme from './theme'
 import UserStatus from './User/UserStatus'
 import SwitchColorMode from './SwitchColorMode'
 
-const Layout = ({ children, title = 'This is the default title' }) => (
+const Layout = ({ children, title = 'To Do with a twist!' }) => (
   <ThemeProvider theme={theme}>
     <Head>
       <title>{title}</title>

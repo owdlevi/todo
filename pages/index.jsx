@@ -36,13 +36,7 @@ Index.propTypes = {
       emailVerified: PropTypes.bool.isRequired
     }),
     token: PropTypes.string
-  }),
-  data: PropTypes.shape({
-    user: PropTypes.shape({
-      id: PropTypes.string
-    }).isRequired,
-    favoriteFood: PropTypes.string.isRequired
-  }).isRequired
+  })
 }
 
 Index.defaultProps = {
