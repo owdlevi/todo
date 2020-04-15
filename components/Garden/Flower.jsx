@@ -10,6 +10,7 @@ const Flower = ({ show }) => {
 
   useInterval(() => {
     const randomColor = Math.floor(Math.random() * 16777215).toString(16)
+    console.log(`First color ${leafColor[1]}, second color ${randomColor}`)
     setLeafColor([leafColor[1], randomColor])
   }, delay)
 
