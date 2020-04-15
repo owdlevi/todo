@@ -4,6 +4,7 @@ import { jsx } from 'theme-ui'
 import loadFirestore from '../../lib/db'
 import Sun from './Sun'
 import Flower from './Flower'
+import Clouds from './Clouds'
 
 const Garden = ({ AuthUserID }) => {
   const [todo, setTodo] = useState(null)
@@ -51,6 +52,16 @@ const Garden = ({ AuthUserID }) => {
           height: '100%',
           overflow: 'hidden'
         }}>
+        <div
+          sx={{
+            width: '10rem',
+            position: 'absolute',
+            top: '40px',
+            left: '100px'
+          }}>
+          <Clouds />
+        </div>
+
         <div
           sx={{
             width: '10rem',

@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { get } from 'lodash/object'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import '../layout.css'
 
 class CustomDocument extends Document {
   render() {
@@ -32,7 +33,7 @@ class CustomDocument extends Document {
   }
 }
 
-CustomDocument.getInitialProps = async ctx => {
+CustomDocument.getInitialProps = async (ctx) => {
   // Get the AuthUserInfo object. This is set if the server-rendered page
   // is wrapped in the `withAuthUser` higher-order component.
   const AuthUserInfo = get(ctx, 'myCustomData.AuthUserInfo', null)

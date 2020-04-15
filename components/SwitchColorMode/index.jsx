@@ -5,10 +5,10 @@ const switchColorMode = () => {
   const [colorMode, setColorMode] = useColorMode()
   return (
     <button
-      onClick={e => {
+      onClick={(e) => {
         setColorMode(colorMode === 'default' ? 'dark' : 'default')
       }}>
-      Toggle {colorMode === 'default' ? 'Dark' : 'Light'}
+      Change Color
     </button>
   )
 }

@@ -18,14 +18,14 @@ export default {
   },
   colors: {
     text: '#000',
-    background: '#fff',
+    background: 'lightskyblue',
     todobg: '#f4f7fc',
     primary: '#07c',
     modes: {
       dark: {
-        text: '#fff',
-        background: '#000',
-        todobg: '#1f1e1e',
+        text: '#000',
+        background: 'salmon',
+        todobg: '#f4f7fc',
         primary: '#0cf'
       }
     }

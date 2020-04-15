@@ -9,7 +9,6 @@ const Todo = () => {
       sx={{
         width: '400px',
         maxWidth: '100%',
-        minHeight: 500,
         m: '20px auto 40px',
         border: '1px solid #eee',
         borderRadius: '4px',

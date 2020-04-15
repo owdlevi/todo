@@ -2,24 +2,22 @@ import React, { useState, useEffect } from 'react'
 import useInterval from '../../hooks/useInterval'
 import { useSpring, animated, config } from 'react-spring'
 
-import FlowerSVG from '../../assets/flower_1.svg'
-
 const Flower = ({ show }) => {
   const [leafColor, setLeafColor] = useState(['35b6b4', '35b6b4'])
   const delay = 4000
 
-  useInterval(() => {
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16)
-    console.log(`First color ${leafColor[1]}, second color ${randomColor}`)
-    setLeafColor([leafColor[1], randomColor])
-  }, delay)
+  // useInterval(() => {
+  //   const randomColor = Math.floor(Math.random() * 16777215).toString(16)
+  //   const newColor = [leafColor[1], randomColor]
+  //   if (newColor.length === 2) setLeafColor(newColor)
+  // }, delay)
 
   const animation = useSpring({
     transform: show ? `translateY(0) scale(1)` : `translateY(150%) scale(0.5)`
   })
   const props = useSpring({ color: `#${leafColor[1]}`, from: { color: `#${leafColor[0]}` } })
   return (
-    <animated.div>
+    <animated.div style={animation}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 325.9">
         <g id="Layer_2" data-name="Layer 2">
           <g id="daffodil">

@@ -17,10 +17,9 @@ const Layout = ({ children, title = 'To Do with a twist!' }) => (
       sx={{
         fontSize: '15px',
         fontFamily: "'Open Sans', sans-serif",
-        backgroundColor: 'background',
-        // backgroundImage: 'linear-gradient(#89cff0 0%, #ef5081 100%)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
+        // backgroundColor: 'background',
+        background: 'colors.background',
+
         margin: 0,
         minHeight: '100vh',
         position: 'relative'
@@ -30,7 +29,8 @@ const Layout = ({ children, title = 'To Do with a twist!' }) => (
           variant: 'styles.header'
         }}>
         <Container
-          p={4}
+          py={1}
+          px={3}
           bg="muted"
           sx={{
             maxWidth: '100%',
@@ -50,13 +50,13 @@ const Layout = ({ children, title = 'To Do with a twist!' }) => (
             </a>
           </Link>
           <div sx={{ mx: 'auto' }} />
-          {/* <SwitchColorMode
+          <SwitchColorMode
             sx={{
               variant: 'styles.button',
               ml: 3,
               py: 2
             }}
-          /> */}
+          />
           <div
             sx={{
               ml: 3,
