@@ -20,13 +20,13 @@ export default {
     text: '#000',
     background: 'lightskyblue',
     todobg: '#f4f7fc',
-    primary: '#07c',
+    primary: 'salmon',
     modes: {
       dark: {
         text: '#000',
         background: 'salmon',
         todobg: '#f4f7fc',
-        primary: '#0cf'
+        primary: 'lightskyblue'
       }
     }
   },

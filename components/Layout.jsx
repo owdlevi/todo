@@ -22,7 +22,8 @@ const Layout = ({ children, title = 'To Do with a twist!' }) => (
 
         margin: 0,
         minHeight: '100vh',
-        position: 'relative'
+        position: 'relative',
+        overflow: 'hidden'
       }}>
       <header
         sx={{
@@ -31,7 +32,6 @@ const Layout = ({ children, title = 'To Do with a twist!' }) => (
         <Container
           py={1}
           px={3}
-          bg="muted"
           sx={{
             maxWidth: '100%',
             mx: 'auto',
@@ -67,6 +67,16 @@ const Layout = ({ children, title = 'To Do with a twist!' }) => (
         </Container>
       </header>
       <Container>{children}</Container>
+      <div
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '46px',
+          background: 'green',
+          zIndex: '0'
+        }}></div>
     </div>
   </ThemeProvider>
 )
