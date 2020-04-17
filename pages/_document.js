@@ -3,7 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { get } from 'lodash/object'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import '../layout.css'
 
 class CustomDocument extends Document {
   render() {
