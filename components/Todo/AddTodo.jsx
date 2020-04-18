@@ -5,7 +5,7 @@ import loadFirestore from '../../lib/db'
 import { get } from 'lodash/object'
 import { useAuthUserInfo } from '../../utils/auth/hooks'
 
-const AddTodo = () => {
+const AddTodo = ({ localUserID }) => {
   const AuthUser = get(useAuthUserInfo(), 'AuthUser', null)
 
   const [todo, setTodo] = useState('')
@@ -16,6 +16,9 @@ const AddTodo = () => {
   }
 
   const storeTodo = async (e) => {
+    const todoCollection = AuthUser && AuthUser.id ? 'todo' : 'todo_noaccount'
+    const userID = AuthUser && AuthUser.id ? AuthUser.id : localUserID
+
     const firebase = await loadFirestore()
     // && (e.type === 'click' || e.charCode === 13)
     if (todo.length > 3) {
@@ -25,8 +28,8 @@ const AddTodo = () => {
       }
       firebase
         .firestore()
-        .collection('todo')
-        .doc(AuthUser.id)
+        .collection(todoCollection)
+        .doc(userID)
         .collection('todos')
         .doc()
         .set(item)

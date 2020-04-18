@@ -1,27 +1,30 @@
-import React from 'react'
-import Layout from '../components/Layout'
-import Todo from '../components/Todo'
-import Garden from '../components/Garden'
-
-import PropTypes from 'prop-types'
+import React, { useState, useEffect } from 'react'
 import { get } from 'lodash/object'
 import withAuthUser from '../utils/pageWrappers/withAuthUser'
 import withAuthUserInfo from '../utils/pageWrappers/withAuthUserInfo'
+import PropTypes from 'prop-types'
+import { v4 as uuidv4 } from 'uuid'
+
+import Layout from '../components/Layout'
+import Todo from '../components/Todo'
+
+const localStorageKey = 'todoUUID'
 
 const Index = (props) => {
+  const [localUserID, setLocalUserID] = useState('')
   const { AuthUserInfo, data } = props
   const AuthUser = get(AuthUserInfo, 'AuthUser', null)
 
+  useEffect(() => {
+    if (!AuthUser && typeof window !== 'undefined') {
+      const localUUID = localStorage.getItem(localStorageKey) || localStorage.setItem(localStorageKey, uuidv4())
+      setLocalUserID(localUUID)
+    }
+  }, [])
+
   return (
     <Layout>
-      {AuthUser ? (
-        <div>
-          <Garden AuthUserID={AuthUser.id} />
-          <Todo AuthUserID={AuthUser.id} />
-        </div>
-      ) : (
-        ``
-      )}
+      <Todo AuthUser={AuthUser} localUserID={localUserID} />
     </Layout>
   )
 }

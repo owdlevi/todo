@@ -4,7 +4,7 @@ import { useSpring, animated } from 'react-spring'
 import { jsx } from 'theme-ui'
 import loadFirestore from '../../lib/db'
 
-const TodoItem = ({ todo, userID, bgcolor }) => {
+const TodoItem = ({ todo, removeTodo, updateTodo, bgcolor }) => {
   const [isActive, setIsActive] = useState(false)
   const [isPressed, setPressed] = useState(false)
 
@@ -17,24 +17,6 @@ const TodoItem = ({ todo, userID, bgcolor }) => {
   }
   const todoActive = (active) => {
     setIsActive(active)
-  }
-
-  const removeTodo = async () => {
-    const firebase = await loadFirestore()
-    firebase.firestore().collection('todo').doc(userID).collection('todos').doc(todo.id).delete()
-  }
-
-  const updateTodo = async () => {
-    const firebase = await loadFirestore()
-    const updatedTodo = { done: !todo.done, todo: todo.todo }
-    firebase
-      .firestore()
-      .collection('todo')
-      .doc(userID)
-      .collection('todos')
-      .doc(todo.id)
-      .set(updatedTodo)
-      .catch((error) => console.error(error))
   }
 
   const checkboxAfter = todo.done
@@ -83,7 +65,7 @@ const TodoItem = ({ todo, userID, bgcolor }) => {
         type="checkbox"
       />
       <label
-        onClick={() => updateTodo()}
+        onClick={() => updateTodo(todo)}
         onMouseDown={() => handleMouse(true)}
         onMouseUp={() => handleMouse(false)}
         sx={{
@@ -110,7 +92,7 @@ const TodoItem = ({ todo, userID, bgcolor }) => {
       </span>
       <animated.span
         style={showDelete}
-        onClick={() => removeTodo()}
+        onClick={() => removeTodo(todo)}
         className="delete"
         sx={{
           position: 'absolute',

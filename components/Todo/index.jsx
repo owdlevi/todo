@@ -1,9 +1,11 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx } from 'theme-ui'
+
+import Garden from '../Garden'
 import AddTodo from './AddTodo'
 import TodoList from '../TodoList'
 
-const Todo = () => {
+const Todo = ({ AuthUser, localUserID }) => {
   return (
     <div
       sx={{
@@ -18,8 +20,9 @@ const Todo = () => {
         overflow: 'hidden',
         position: 'relative'
       }}>
-      <AddTodo />
-      <TodoList />
+      {AuthUser && <Garden AuthUserID={AuthUser.id} />}
+      <AddTodo AuthUser={AuthUser} localUserID={localUserID} />
+      <TodoList AuthUser={AuthUser} localUserID={localUserID} />
     </div>
   )
 }
