@@ -66,8 +66,9 @@ const AddTodo = ({ localUserID }) => {
         sx={{
           variant: 'styles.input',
           border: '1px solid #ddd',
-          backgroundColor: 'background',
-          color: 'text',
+          backgroundColor: 'primary',
+          color: 'primaryText',
+          borderRadius: '2px',
           ml: 20,
           outline: 0,
           cursor: 'pointer'

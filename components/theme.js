@@ -18,15 +18,17 @@ export default {
   },
   colors: {
     text: '#000',
-    background: 'lightskyblue',
+    background: '#30336B',
     todobg: '#f4f7fc',
-    primary: 'salmon',
+    primary: '#E55039',
+    primaryText: '#FFFFFF',
     modes: {
       dark: {
         text: '#000',
         background: 'salmon',
         todobg: '#f4f7fc',
-        primary: 'lightskyblue'
+        primary: '#E55039',
+        primaryText: '#FFFFFF'
       }
     }
   },
@@ -44,13 +46,37 @@ export default {
       fontWeight: 'body'
     },
     header: {
-      width: '100%'
+      width: '100%',
+      fontSize: '14px',
+      height: '64px',
+      padding: '0 24px',
+      boxShadow: '0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15)',
+      background: 'white',
+      display: 'flex',
+      zIndex: 100,
+      // position: 'fixed',
+      top: 0
     },
     navlink: {
       color: 'color.text'
     },
+    linkbutton: {
+      fontWeight: '500',
+      cursor: 'pointer',
+      px: 3,
+      py: 2,
+      borderRadius: '3px',
+      bg: 'primary',
+      color: 'primaryText',
+      display: 'inline-block',
+      fontWeight: '500',
+      fontSize: '15px',
+      lineHeight: '18px',
+      border: 0
+    },
     button: {
-      color: 'color.text'
+      color: 'color.text',
+      background: 'color.background'
     },
     input: {
       lineHeight: '2em',

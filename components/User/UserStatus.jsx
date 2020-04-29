@@ -1,49 +1,27 @@
 /** @jsx jsx */
+import { useState, useEffect } from 'react'
 import { jsx } from 'theme-ui'
 import { get } from 'lodash/object'
-import Link from 'next/link'
-import Router from 'next/router'
 import { useFirebaseAuth, useAuthUserInfo } from '../../utils/auth/hooks'
-import logout from '../../utils/auth/logout'
+import UserAvatar from './UserAvatar'
+import LoginForm from './LoginForm'
 
 const UserStatus = (props) => {
+  const [showLogin, setShowLogin] = useState(false)
+
   const { initializing, user } = useFirebaseAuth()
   const AuthUser = get(useAuthUserInfo(), 'AuthUser', null)
+  const showModal = () => {
+    setShowLogin(!showLogin)
+  }
   return user ? (
-    <div>
-      {user.photoURL && (
-        <img
-          sx={{
-            maxWidth: '50px',
-            borderRadius: '50%'
-          }}
-          src={user.photoURL}
-          alt={user.displayName}
-        />
-      )}
-      <p
-        style={{
-          display: 'inlinelock',
-          color: 'blue',
-          textDecoration: 'underline',
-          cursor: 'pointer'
-        }}
-        onClick={async () => {
-          try {
-            await logout()
-            Router.push('/')
-          } catch (e) {
-            console.error(e)
-          }
-        }}>
-        Log out
-      </p>
-    </div>
+    <UserAvatar user={user} />
   ) : (
     <div>
-      <Link href={'/auth'}>
-        <a>Sign in</a>
-      </Link>
+      <button onClick={showModal} sx={{ variant: 'styles.linkbutton' }}>
+        Sign in
+      </button>
+      <LoginForm showLogin={showLogin} />
     </div>
   )
 }
