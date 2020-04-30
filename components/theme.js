@@ -22,13 +22,31 @@ export default {
     todobg: '#f4f7fc',
     primary: '#E55039',
     primaryText: '#FFFFFF',
+    logo: '#E55039',
     modes: {
-      dark: {
+      blue: {
+        text: '#000',
+        background: '#30336B',
+        todobg: '#f4f7fc',
+        primary: '#E55039',
+        primaryText: '#FFFFFF',
+        logo: '#E55039'
+      },
+      salmon: {
         text: '#000',
         background: 'salmon',
         todobg: '#f4f7fc',
-        primary: '#E55039',
-        primaryText: '#FFFFFF'
+        primary: 'salmon',
+        primaryText: '#FFFFFF',
+        logo: '#E55039'
+      },
+      green: {
+        text: '#000',
+        background: 'forestgreen',
+        todobg: '#f4f7fc',
+        primary: 'forestgreen',
+        primaryText: '#FFFFFF',
+        logo: 'forestgreen'
       }
     }
   },
